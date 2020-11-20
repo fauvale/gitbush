@@ -2,7 +2,7 @@
 
 using namespace std;
 
-double my_pow(double x, int n);
+double my_pow(double x, unsigned int n);
 
 int main()
 {
@@ -20,37 +20,22 @@ int main()
     return 0;
 }
 
-double my_pow(double x, int n)
+double my_pow(double x, unsigned int n)
 {
-    double result = 1;
-    if (n < 0) {
-        n = -n;
-
-        while (n) {
-            if (n % 2 == 0) {
-                n /= 2;
-                x *= x;
-            }
-            else {
-                n--;
-                result *= x;
-            }
+    double count = 1;
+    if (!n) return 1;
+    while (n)
+    {
+        if (n % 2 == 0)
+        {
+            n /= 2;
+            x *= x;
         }
-
-        return 1 / result;
-    }
-    else {
-        while (n) {
-            if (n % 2 == 0) {
-                n /= 2;
-                x *= x;
-            }
-            else {
-                n--;
-                result *= x;
-            }
+        else
+        {
+            n--;
+            count *= x;
         }
-
-        return result;
     }
+    return count;
 }
